@@ -52,6 +52,22 @@ public class Glowingfriends implements ModInitializer {
 					.executes(this::listPlayers));
 
 			dispatcher.register(command);
+
+			LiteralArgumentBuilder<FabricClientCommandSource> alias = ClientCommandManager.literal("gwf");
+			alias.then(createSubCommand("ally", GlowingPlayer.Type.ALLY));
+			alias.then(createSubCommand("enemy", GlowingPlayer.Type.ENEMY));
+			alias.then(createSubCommand("friend", GlowingPlayer.Type.FRIEND));
+			alias.then(ClientCommandManager.literal("add")
+					.then(ClientCommandManager.argument("player", StringArgumentType.string())
+							.suggests(this::suggestOnlinePlayers)
+							.executes(ctx -> addPlayer(ctx, GlowingPlayer.Type.NORMAL))));
+			alias.then(ClientCommandManager.literal("remove")
+					.then(ClientCommandManager.argument("player", StringArgumentType.string())
+							.suggests(this::suggestGlowingPlayers)
+							.executes(this::removePlayer)));
+			alias.then(ClientCommandManager.literal("list")
+					.executes(this::listPlayers));
+			dispatcher.register(alias);
 		});
 	}
 

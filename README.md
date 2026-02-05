@@ -9,9 +9,9 @@ this has both **enemy(red), ally(yellow), friend(green)** outlines
 
 /glowingfriends friend add PLAYER
 ### FUTURE COMMITS
-- [ ] work with valed.gg clan wars 
-- [ ] /gw or /gws instead of /glowingfriends
-- [ ] more versions/a univerbal version 
+- [x] /gw or /gws instead of /glowingfriends
+- [x] more versions/a univerbal version 
+
 # Credits
 credits to kkwhat 
 this is both a re-upload of glowingfriends and with an extra commit.
